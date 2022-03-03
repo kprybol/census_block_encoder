@@ -1,6 +1,19 @@
-name: build-deploy-pr
- on:
-   pull_request:
+
+name: Build & Deploy Docker Containers
+on:
+  # We'll trigger this workflow when a PR is submitted to make sure
+  # your application still builds successfully with the new commits.
+  pull_request: []
+  # We'll also trigger this workflow when you want to deploy your container.
+  # This means any push to main. You might want to do a release trigger.
+  push:
+    branches:
+      - main
+      - master
+  # Let's also trigger a build and publish of your container when
+  # you release a new version. You can use "created" here instead of published.
+  release:
+    types: [published]
  jobs:
    deploy-images:
      runs-on: ubuntu-latest
