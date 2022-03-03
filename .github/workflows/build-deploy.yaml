@@ -13,16 +13,18 @@ on:
   # you release a new version. You can use "created" here instead of published.
   release:
     types: [published]
- jobs:
-   deploy-images:
-     runs-on: ubuntu-latest
-     env:
-       registry: ghcr.io
-       username: kprybol
-       repository: census_block_encoder
-     strategy:
-       fail-fast: false
-     steps:
+jobs:
+  deploy-images:
+    runs-on: ubuntu-latest
+    env:
+      registry: ghcr.io
+      username: kprybol
+      repository: census_block_encoder
+    strategy:
+      fail-fast: false
+      matrix:
+        dockerfile: [[Dockerfile, latest]]
+    steps:
       - name: Maximize build space
         uses: easimon/maximize-build-space@master
         with:
