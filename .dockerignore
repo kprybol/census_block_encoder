@@ -1,0 +1,9 @@
+# ignore everything
+**
+
+# except what we need
+!/renv.lock
+!/census_block.R
+!/block_2020_5072.rds
+!/block_2010_5072.rds
+
